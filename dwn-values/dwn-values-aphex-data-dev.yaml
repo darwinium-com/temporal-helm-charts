@@ -5,9 +5,9 @@ server:
         default:
           driver: "sql"
           sql:
-            driver: "postgres"
-            host: "postgresql-dwn"
-            port: 5432
+            driver: "mysql"
+            host: "rds-dev-temporal-us-east-2-mysql-temporal.cyu5dpdwbrwz.us-east-2.rds.amazonaws.com"
+            port: 3306
             database: temporal
             user: "postgres"
             existingSecret: "temporal-db-secret"
@@ -18,28 +18,28 @@ server:
           driver: "sql"
 
           sql:
-            driver: "postgres"
-            host: "postgresql-dwn"
-            port: 5432
+            driver: "mysql"
+            host: "rds-dev-temporal-us-east-2-mysql-temporal.cyu5dpdwbrwz.us-east-2.rds.amazonaws.com"
+            port: 3306
             database: temporal_visibility
             user: "postgres"
             existingSecret: "temporal-db-secret"
             maxConns: 20
             maxConnLifetime: "1h"
-  cassandra:
+cassandra:
+  enabled: false
+elasticsearch:
+  enabled: false
+prometheus:
+  enabled: false
+grafana:
+  enabled: false
+mysql:
+  enabled: false
+postgresql:
+  enabled: false
+schema:
+  setup:
     enabled: false
-  elasticsearch:
+  update:
     enabled: false
-  prometheus:
-    enabled: false
-  grafana:
-    enabled: false
-  mysql:
-    enabled: false
-  postgresql:
-    enabled: false
-  schema:
-    setup:
-      enabled: false
-    update:
-      enabled: false
