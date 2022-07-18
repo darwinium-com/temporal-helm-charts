@@ -1,0 +1,45 @@
+server:
+    replicaCount: 1
+    config:
+      persistence:
+        default:
+          driver: "sql"
+          sql:
+            driver: "postgres"
+            host: "postgresql-dwn"
+            port: 5432
+            database: temporal
+            user: "postgres"
+            existingSecret: "temporal-db-secret"
+            maxConns: 20
+            maxConnLifetime: "1h"
+
+        visibility:
+          driver: "sql"
+
+          sql:
+            driver: "postgres"
+            host: "postgresql-dwn"
+            port: 5432
+            database: temporal_visibility
+            user: "postgres"
+            existingSecret: "temporal-db-secret"
+            maxConns: 20
+            maxConnLifetime: "1h"
+  cassandra:
+    enabled: false
+  elasticsearch:
+    enabled: false
+  prometheus:
+    enabled: false
+  grafana:
+    enabled: false
+  mysql:
+    enabled: false
+  postgresql:
+    enabled: false
+  schema:
+    setup:
+      enabled: false
+    update:
+      enabled: false
